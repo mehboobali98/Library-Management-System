@@ -1,13 +1,14 @@
 package LMS;
 
-public class Staff extends Person{
+public class Staff extends Person {
     private double _salary;
 
-    Staff(int id, String name, String password, String phoneNumber, String address,double salary) {
+    Staff(int id, String name, String password, String phoneNumber, String address, double salary) {
         super(id, name, password, phoneNumber, address);
-        this._salary=salary;
+        this._salary = salary;
     }
-    public int getId(){
+
+    public int getId() {
         return super._id;
     }
 

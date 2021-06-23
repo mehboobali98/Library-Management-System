@@ -2,11 +2,12 @@ package LMS;
 
 import java.util.Scanner;
 
-public class DeskClerk extends  Staff{
+public class DeskClerk extends Staff {
     private int _deskNumber;
-    DeskClerk(int id, String name, String password, String phoneNumber, String address, double salary,int deskNumber) {
+
+    DeskClerk(int id, String name, String password, String phoneNumber, String address, double salary, int deskNumber) {
         super(id, name, password, phoneNumber, address, salary);
-        this._deskNumber=deskNumber;
+        this._deskNumber = deskNumber;
     }
 
     public int get_deskNumber() {
@@ -24,11 +25,12 @@ public class DeskClerk extends  Staff{
                 "\nName        : " + _name +
                 "\nPassword    : " + _password +
                 "\nPhoneNumber : " + _phoneNumber +
-                "\nAddress     : "+ _address +
+                "\nAddress     : " + _address +
                 "\nDeskNumber  : " + _deskNumber +
                 "\n}";
     }
-    public void EditDeskClerk(){
+
+    public void EditDeskClerk() {
         Scanner scanner = new Scanner(System.in);
         int editOption = -1;
         String editMenu = "\n1 to edit id" +

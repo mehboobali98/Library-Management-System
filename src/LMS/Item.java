@@ -1,16 +1,12 @@
 package LMS;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Item {
     int _ID;
     String _name;
     private static int currentItemId = 0;
 
     Item(int ID, String name) {
-        if( ID == -1)
-        {
+        if (ID == -1) {
             currentItemId++;
             this._ID = currentItemId;
         } else {
@@ -41,7 +37,6 @@ public class Item {
                 "\nID=" + _ID +
                 "\nname='" + _name + '\'' +
                 "\n}";
-
     }
 }
 

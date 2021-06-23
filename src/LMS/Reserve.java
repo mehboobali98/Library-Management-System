@@ -10,11 +10,10 @@ public class Reserve {
 
     private static int currentReserveId = 0;
 
-    Reserve(int id,Date reserveDate, Borrower borrower, Book book) {
-        if(id == -1)
-        {
-           currentReserveId++;
-           this._id = currentReserveId;
+    Reserve(int id, Date reserveDate, Borrower borrower, Book book) {
+        if (id == -1) {
+            currentReserveId++;
+            this._id = currentReserveId;
         }
         this._id = id;
         this._book = book;
@@ -65,9 +64,8 @@ public class Reserve {
                 '}';
     }
 
-    public String print()
-    {
-         return _book.get_name() + "\t\t" + _borrower.get_name() + "\t\t"  + _reserveDate + "\n";
+    public String print() {
+        return _book.get_name() + "\t\t" + _borrower.get_name() + "\t\t" + _reserveDate + "\n";
     }
 
     void printInfo() {
