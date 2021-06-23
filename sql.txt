@@ -1,0 +1,175 @@
+drop database LMS;
+create database LMS;
+use LMS;
+
+
+
+create table Books
+(
+    id           int,
+    name         varchar(100),
+    isIssued     bool,
+    title        varchar(100),
+    isReferenced bool
+);
+
+create table Magazine
+(
+    id      int,
+    name    varchar(100),
+    company varchar(100)
+);
+
+create table DVD
+(
+    id       int,
+    name     varchar(100),
+    composer varchar(100)
+);
+create table BooksAuthor
+(
+    id   int,
+    name varchar(100)
+);
+
+create table DeskClerk
+(
+    id          int,
+    name        varchar(100),
+    password    varchar(100),
+    phoneNumber varchar(12),
+    address     varchar(250),
+    salary      double,
+    deskNumber  int
+);
+
+create table Librarian
+(
+    id           int,
+    name         varchar(100),
+    password     varchar(100),
+    phoneNumber  varchar(12),
+    address      varchar(250),
+    salary       double,
+    officeNumber int
+);
+
+create table Borrower
+(
+    id          int,
+    name        varchar(100),
+    password    varchar(100),
+    phoneNumber varchar(12),
+    address     varchar(250)
+);
+
+create table Loan
+(
+    loanID     int,
+    issueDate  DATE,
+    returnDate DATE,
+    finePaid   boolean,
+    issuerID   int,
+    receiverID int,
+    borrowerID int,
+    bookid     int
+);
+
+
+create table Reserve
+(
+    reserveID   int,
+    reserveDate DATE,
+    borrowerID  int,
+    bookID      int
+);
+
+insert into Loan(loanID, issueDate, returnDate, finePaid, issuerID, receiverID, borrowerID, bookid)
+values ()
+
+insert into DeskClerk(id, name, password, phoneNumber, address, salary, deskNumber) 
+values (6,123,132,1235,53,5,5);
+
+insert into DeskClerk(id, name, password, phoneNumber, address, salary, deskNumber)
+values (1, 'Kamran 1', 'Osama Atta', '0123456', 'In Osama Dreams', '0.0', 1),
+       (2, 'Kamran 2', 'Osama Atta', '0123456', 'In Osama Dreams', '0.0', 2),
+       (3, 'Kamran 3', 'Osama Atta', '0123456', 'In Osama Dreams', '0.0', 3),
+       (4, 'Kamran 4', 'Osama Atta', '0123456', 'In Osama Dreams', '0.0', 4),
+       (5, 'Kamran 5', 'Osama Atta', '0123456', 'In Osama Dreams', '0.0', 5),
+       (6, 'Kamran 6', 'Osama Atta', '0123456', 'In Osama Dreams', '0.0', 6),
+       (7, 'Kamran 7', 'Osama Atta', '0123456', 'In Osama Dreams', '0.0', 7),
+       (8, 'Kamran 8', 'Osama Atta', '0123456', 'In Osama Dreams', '0.0', 8),
+       (9, 'Kamran 9', 'Osama Atta', '0123456', 'In Osama Dreams', '0.0', 9);
+
+
+insert into Librarian(id, name, password, phoneNumber, address, salary, officeNumber)
+values (101, 'Sajjad Ali 101', 'kotlin', '0123456', 'In Android ', '0.0', 1),
+       (102, 'Sajjad Ali 102', 'kotlin', '0123456', 'In Android ', '0.0', 2),
+       (103, 'Sajjad Ali 103', 'kotlin', '0123456', 'In Android ', '0.0', 3),
+       (104, 'Sajjad Ali 104', 'kotlin', '0123456', 'In Android ', '0.0', 4),
+       (105, 'Sajjad Ali 105', 'kotlin', '0123456', 'In Android ', '0.0', 5),
+       (106, 'Sajjad Ali 106', 'kotlin', '0123456', 'In Android ', '0.0', 6);
+
+
+insert into Borrower(id, name, password, phoneNumber, address)
+values (10011, 'Arsal 10011', 'IamBook', '032145', 'In Library'),
+       (10012, 'Arsal 10012', 'IamBook', '032145', 'In Library'),
+       (10013, 'Arsal 10013', 'IamBook', '032145', 'In Library'),
+       (10014, 'Arsal 10014', 'IamBook', '032145', 'In Library'),
+       (10015, 'Arsal 10015', 'IamBook', '032145', 'In Library'),
+       (10016, 'Arsal 10016', 'IamBook', '032145', 'In Library'),
+       (10017, 'Arsal 10017', 'IamBook', '032145', 'In Library'),
+       (10018, 'Arsal 10018', 'IamBook', '032145', 'In Library'),
+       (10019, 'Arsal 10019', 'IamBook', '032145', 'In Library'),
+       (10020, 'Arsal 10020', 'IamBook', '032145', 'In Library'),
+       (10021, 'Arsal 10021', 'IamBook', '032145', 'In Library'),
+       (10022, 'Arsal 10022', 'IamBook', '032145', 'In Library'),
+       (10023, 'Arsal 10023', 'IamBook', '032145', 'In Library');
+
+
+insert into Books(id, name, isIssued, title, isReferenced)
+values (11, 'How to C++', false, 'ENGLISH', false),
+       (12, 'How to C++', false, 'ENGLISH', false),
+       (13, 'How to C++', false, 'ENGLISH', false),
+       (14, 'How to C++', false, 'ENGLISH', false),
+       (15, 'How to C++', false, 'ENGLISH', false),
+       (16, 'How to C++', false, 'ENGLISH', false),
+       (17, 'How to C++', false, 'ENGLISH', false),
+       (18, 'How to C++', false, 'ENGLISH', false),
+       (19, 'How to C++', false, 'ENGLISH', false),
+       (20, 'How to C++', false, 'ENGLISH', false),
+       (21, 'How to C++', false, 'ENGLISH', false);
+
+insert into BooksAuthor(id, name)
+values (11, 'Ali Adnan'),
+       (11, 'Sajjad Ali'),
+       (12, 'Ali Adnan'),
+       (12, 'Sajjad Ali'),
+       (13, 'Ali Adnan'),
+       (13, 'Sajjad Ali'),
+       (14, 'Ali Adnan'),
+       (14, 'Sajjad Ali'),
+       (15, 'Ali Adnan'),
+       (15, 'Sajjad Ali'),
+       (16, 'Ali Adnan'),
+       (16, 'Sajjad Ali'),
+       (17, 'Ali Adnan'),
+       (17, 'Sajjad Ali'),
+       (18, 'Ali Adnan'),
+       (18, 'Sajjad Ali'),
+       (19, 'Ali Adnan'),
+       (19, 'Sajjad Ali'),
+       (20, 'Ali Adnan'),
+       (20, 'Sajjad Ali'),
+       (21, 'Ali Adnan'),
+       (21, 'Sajjad Ali');
+
+insert into DVD(id, name, composer)
+value (1, 'The dark knight', 'batman');
+
+insert into BooksAuthor(id, name)
+values (1, 'Zardari'),
+       (2, 'kamran');
+select *
+from DVD;
+
