@@ -21,34 +21,29 @@ public class Book extends Item {
         this._isReferenced = isReferenced;
     }
 
-    public void reserveBook(Borrower bor)
-    {
+    public void reserveBook(Borrower bor) {
         boolean makeRequest = true;
-        if(is_isReferenced()==false) // referenced books cannot be reserved
+        if (is_isReferenced() == false) // referenced books cannot be reserved
         {
-            if(bor.checkIfAlreadyBorrowed(this) == true) // book has already been borrowed by the user
+            if (bor.checkIfAlreadyBorrowed(this) == true) // book has already been borrowed by the user
             {
                 System.out.println("\n" + "You have already borrowed " + this._name);
                 return;
             } else {
-                for (int i = 0; i < this._reserveList.size(); i++)
-                {
-                    if ((this._reserveList.get(i).get_borrower() == bor))
-                    {
+                for (int i = 0; i < this._reserveList.size(); i++) {
+                    if ((this._reserveList.get(i).get_borrower() == bor)) {
                         makeRequest = false;
                         break;
                     }
                 }
-                if (makeRequest)
-                {
-                    Reserve reserve = new Reserve(-1,new Date(), bor, this);
+                if (makeRequest) {
+                    Reserve reserve = new Reserve(-1, new Date(), bor, this);
 
                     addReserveRequest(reserve);
                     bor.addReserveBook(reserve);
 
                     System.out.println("\nThe book " + this._name + " has been successfully placed on hold by borrower " + bor.get_name() + ".\n");
-                }
-                else
+                } else
                     System.out.println("\nYou already have one hold request for this book.\n");
             }
 
@@ -56,24 +51,19 @@ public class Book extends Item {
 
     }
 
-    public void addReserveRequest(Reserve r)
-    {
-        if(this._reserveList != null)
-        {
+    public void addReserveRequest(Reserve r) {
+        if (this._reserveList != null) {
             this._reserveList.add(r);
         }
     }
 
-    public void issueBook(Borrower bor, Staff staff)
-    {
+    public void issueBook(Borrower bor, Staff staff) {
         // TODO: 12/4/2019  name = title, subject = fiction etc
-        if(bor.checkBorrowerEligibility() == true)
-        {
-            if(checkBookAvailability() == true)
-            {
+        if (bor.checkBorrowerEligibility() == true) {
+            if (checkBookAvailability() == true) {
                 set_isIssued(true);
 
-                Loan l = new Loan(-1, new Date(),null,false,staff,null,bor,this);
+                Loan l = new Loan(-1, new Date(), null, false, staff, null, bor, this);
 
                 Library.getInstance().addLoanedItem(l); // getting loan object maintain loan history
                 bor.addLoanedBook(l);  // adding it to borrower's loan list
@@ -87,9 +77,9 @@ public class Book extends Item {
             System.out.println("\nThe borrower" + bor.get_name() + " is ineligible for borrowing a book");
         }
     }
+
     //return book
-    public void checkInBook(Borrower bor, Staff staff, Loan l )
-    {
+    public void checkInBook(Borrower bor, Staff staff, Loan l) {
         l.get_book().set_isIssued(false);
         l.set_returnDate(new Date());
         l.set_receiver(staff);
@@ -99,8 +89,7 @@ public class Book extends Item {
 
         double fine = l.calculateFine();
 
-        if(fine > 0)
-        {
+        if (fine > 0) {
             l.payFine();  //pay fine extends check in book as per the use case
         }
 
@@ -109,15 +98,14 @@ public class Book extends Item {
         System.out.println("\nReceived by: " + staff.get_name());
     }
 
-    public boolean checkBookAvailability()
-    {
-        if(this.is_isIssued() || this.is_isReferenced())
-        {
+    public boolean checkBookAvailability() {
+        if (this.is_isIssued() || this.is_isReferenced()) {
             return false;
         }
 
         return true;
     }
+
     public boolean is_isIssued() {
         return _isIssued;
     }
@@ -178,30 +166,25 @@ public class Book extends Item {
         this._loanList.remove(loan);
     }
 
-    public void printInfo()
-    {
+    public void printInfo() {
         System.out.println("ID: " + this.get_ID());
         System.out.println("Subject: " + this._subject);
         System.out.println("Authors: ");
-        for(int i=0;i<this._authorList.size();i++)
-        {
+        for (int i = 0; i < this._authorList.size(); i++) {
             System.out.println(i + ":" + this._authorList.get(i));
         }
 
     }
 
-    public void printReserveRequests()
-    {
-        if(this._reserveList != null)
-        {
+    public void printReserveRequests() {
+        if (this._reserveList != null) {
             System.out.println("\nReserve Requests are: ");
 
             System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
             System.out.println("No.\t\tBook's Title\t\t\tBorrower's Name\t\t\tRequest Date");
             System.out.println("---------------------------------------------------------------------------------------------------------------------------------------");
 
-            for( int i=0; i<this._reserveList.size();i++)
-            {
+            for (int i = 0; i < this._reserveList.size(); i++) {
                 System.out.print(i + "-" + "\t\t");
                 this._reserveList.get(i).print();
             }
@@ -210,7 +193,6 @@ public class Book extends Item {
             System.out.println("\nThere are no reservation requests for this book.");
         }
     }
-
 
     String print() {
         return "Book{" +

@@ -16,7 +16,7 @@ public class Loan {
     Book _book;
     static int currentLoanId = 0;
 
-    public Loan(int loanId, Date iDate, Date rDate, boolean fPaid,Staff i, Staff r, Borrower bor, Book b)  // Para cons.
+    public Loan(int loanId, Date iDate, Date rDate, boolean fPaid, Staff i, Staff r, Borrower bor, Book b)  // Para cons.
     {
         if (loanId == -1) {
             currentLoanId++;
@@ -34,8 +34,8 @@ public class Loan {
         _finePaid = fPaid;
     }
 
-    Loan(int loanID, Date returnDate,Date issueDate,boolean finePaid) {
-        this._loanID =loanID;
+    Loan(int loanID, Date returnDate, Date issueDate, boolean finePaid) {
+        this._loanID = loanID;
         this._issueDate = issueDate;
         this._returnDate = returnDate;
         this._finePaid = finePaid;
@@ -60,13 +60,11 @@ public class Loan {
         return totalFine;
     }
 
-    public void payFine()
-    {
+    public void payFine() {
 
         double totalFine = calculateFine();
 
-        if (totalFine > 0)
-        {
+        if (totalFine > 0) {
             System.out.println("\nTotal Fine generated: Rs " + totalFine);
 
             System.out.println("Do you want to pay? (y/n)");
@@ -75,14 +73,12 @@ public class Loan {
 
             String choice = input.next();
 
-            if(choice.equalsIgnoreCase("y"))
+            if (choice.equalsIgnoreCase("y"))
                 _finePaid = true;
 
-            if(choice.equalsIgnoreCase("n"))
+            if (choice.equalsIgnoreCase("n"))
                 _finePaid = false;
-        }
-        else
-        {
+        } else {
             System.out.println("\nNo fine is generated.");
             _finePaid = true;
         }
@@ -90,15 +86,14 @@ public class Loan {
 
 
     // Extending issued Date
-    public void renewIssuedBook(Date issueDate)
-    {
+    public void renewIssuedBook(Date issueDate) {
         _issueDate = issueDate;
 
         System.out.println("\nThe deadline of the book " + this.get_book().get_name() + " has been extended.");
         System.out.println("Issued Book is successfully renewed!\n");
 
         int days = Library.getInstance().bookReturnDeadline;
-        Date dueDate = Helper.addDays(_issueDate, days );
+        Date dueDate = Helper.addDays(_issueDate, days);
 
         System.out.println("The due date is: " + dueDate.toString());
 

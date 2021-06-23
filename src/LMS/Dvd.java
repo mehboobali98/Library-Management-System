@@ -1,11 +1,11 @@
 package LMS;
 
-public class Dvd extends Item{
-    String _composer;
+public class Dvd extends Item {
+    private String _composer;
 
-    Dvd(int ID, String name,String composer) {
+    Dvd(int ID, String name, String composer) {
         super(ID, name);
-        this._composer=composer;
+        this._composer = composer;
     }
 
     public String get_composer() {

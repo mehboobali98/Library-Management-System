@@ -1,8 +1,6 @@
 package LMS;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Borrower extends Person {
@@ -17,49 +15,39 @@ public class Borrower extends Person {
     }
 
     // remove loan object from loaned book list when the book has been returned
-    public void removeLoanedBook(Loan l)
-    {
-        if(this.loanedBooksList != null)
-        {
+    public void removeLoanedBook(Loan l) {
+        if (this.loanedBooksList != null) {
             this.loanedBooksList.remove(l);
         }
     }
 
     // Printing Book's Info Borrowed by Borrower
-    public void printBorrowedBooks()
-    {
-        if (!this.loanedBooksList.isEmpty())
-        {
+    public void printBorrowedBooks() {
+        if (!this.loanedBooksList.isEmpty()) {
             System.out.println("\nBorrowed Books are: ");
 
             System.out.println("------------------------------------------------------------------------------");
             System.out.println("Loan id\t\tNo.\t\tTitle\t\t\tAuthor\t\t\tSubject");
             System.out.println("------------------------------------------------------------------------------");
 
-            for (int i = 0; i < this.loanedBooksList.size(); i++)
-            {
+            for (int i = 0; i < this.loanedBooksList.size(); i++) {
                 System.out.print(i + "-" + "\t\t");
                 System.out.println(this.loanedBooksList.get(i)._loanID);
                 this.loanedBooksList.get(i).get_book().printInfo();
                 System.out.print("\n");
             }
-        }
-        else
+        } else
             System.out.println("\nNo borrowed books.");
     }
 
-    public void addLoanedBook(Loan l)
-    {
-        if(this.loanedBooksList != null)
-        {
+    public void addLoanedBook(Loan l) {
+        if (this.loanedBooksList != null) {
             this.loanedBooksList.add(l);
         }
     }
 
-    public boolean checkBorrowerEligibility()
-    {
-        if(checkBorrowedBookCount()==true && checkFineStatus()==true)
-        {
+    public boolean checkBorrowerEligibility() {
+        if (checkBorrowedBookCount() == true && checkFineStatus() == true) {
             return true;  // borrower will be eligible to issue a book if both are true
         } else {
             return false;
@@ -67,12 +55,9 @@ public class Borrower extends Person {
 
     }
 
-    public boolean checkBorrowedBookCount()
-    {
-        if(this.loanedBooksList != null)
-        {
-            if(this.loanedBooksList.size() > 4)
-            {
+    public boolean checkBorrowedBookCount() {
+        if (this.loanedBooksList != null) {
+            if (this.loanedBooksList.size() > 4) {
                 return false;  // cannot issue more than 4 books
             }
 
@@ -82,29 +67,25 @@ public class Borrower extends Person {
         return true;
     }
 
-    public boolean checkFineStatus()
-    {
-        for(Loan l : loanedBooksList)
-        {
-            if(l.calculateFine() > 0)
-            {
+    public boolean checkFineStatus() {
+        for (Loan l : loanedBooksList) {
+            if (l.calculateFine() > 0) {
                 return false;
             }
         }
         return true;
     }
 
-    public boolean checkIfAlreadyBorrowed(Book b)
-    {
-        for(int i=0; i<this.loanedBooksList.size() ;i++)
-        {
-            if(this.loanedBooksList.get(i).get_book()==b) // book has already been loaned
+    public boolean checkIfAlreadyBorrowed(Book b) {
+        for (int i = 0; i < this.loanedBooksList.size(); i++) {
+            if (this.loanedBooksList.get(i).get_book() == b) // book has already been loaned
             {
                 return true;
             }
         }
         return false;
     }
+
     public ArrayList<Reserve> get_reservedBooksList() {
         return reservedBookList;
     }
@@ -121,12 +102,14 @@ public class Borrower extends Person {
         this.loanedBooksList = _loanBooksList;
     }
 
-    public void addReserveBook(Reserve res){
+    public void addReserveBook(Reserve res) {
         this.reservedBookList.add(res);
     }
-    public void removeReservedBook(Book book){
+
+    public void removeReservedBook(Book book) {
         this.reservedBookList.remove(book);
     }
+
     @Override
     public String toString() {
         return "Borrower{" +
@@ -139,9 +122,11 @@ public class Borrower extends Person {
                 "\nLoanBooksList     : " + loanedBooksList +
                 "\n}";
     }
-    public String print(){
+
+    public String print() {
         return super.toString();
     }
+
     public void EditBorrower() {
         Scanner scanner = new Scanner(System.in);
         int editOption = -1;

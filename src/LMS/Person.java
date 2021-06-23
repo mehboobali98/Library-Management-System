@@ -1,6 +1,6 @@
 package LMS;
 
-public class Person{
+public class Person {
 
     protected int _id;
     protected String _name;
@@ -10,18 +10,17 @@ public class Person{
 
     private static int currentPersonId = 0;
 
-    Person(int id,String name,String password,String phoneNumber,String address){
-        if(id == -1)
-        {
+    Person(int id, String name, String password, String phoneNumber, String address) {
+        if (id == -1) {
             currentPersonId++;
             this._id = currentPersonId;
         } else {
             this._id = id;
         }
-        this._name=name;
-        this._password=password;
+        this._name = name;
+        this._password = password;
         this._phoneNumber = phoneNumber;
-        this._address=address;
+        this._address = address;
     }
 
     public int get_id() {
@@ -75,7 +74,7 @@ public class Person{
                 "\n}";
     }
 
-    void printInfo(){
+    void printInfo() {
         System.out.println(this);
     }
 }
