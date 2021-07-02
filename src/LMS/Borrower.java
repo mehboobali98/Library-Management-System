@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class Borrower extends Person {
 
-    ArrayList<Loan> loanedBooksList;
-    ArrayList<Reserve> reservedBookList;
+    private ArrayList<Loan> loanedBooksList;
+    private ArrayList<Reserve> reservedBookList;
 
     Borrower(int id, String name, String password, String phoneNumber, String address) {
         super(id, name, password, phoneNumber, address);
@@ -52,7 +52,6 @@ public class Borrower extends Person {
         } else {
             return false;
         }
-
     }
 
     public boolean checkBorrowedBookCount() {
@@ -60,10 +59,8 @@ public class Borrower extends Person {
             if (this.loanedBooksList.size() > 4) {
                 return false;  // cannot issue more than 4 books
             }
-
             return true;
         }
-
         return true;
     }
 
