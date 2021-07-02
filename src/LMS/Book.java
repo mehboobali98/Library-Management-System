@@ -6,19 +6,21 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Book extends Item {
-    boolean _isIssued;
-    String _subject;
+    private String _subject;
     boolean _isReferenced;
-
-    List<String> _authorList = new ArrayList<>();
-    List<Loan> _loanList = new ArrayList<>();
-    List<Reserve> _reserveList = new ArrayList<>();
+    boolean _isIssued;
+    private List<String> _authorList;
+    private List<Loan> _loanList;
+    private List<Reserve> _reserveList;
 
     Book(int ID, String name, boolean isIssued, String title, boolean isReferenced) {
         super(ID, name);
-        this._isIssued = isIssued;
-        this._subject = title;
-        this._isReferenced = isReferenced;
+        _isIssued = isIssued;
+        _subject = title;
+        _isReferenced = isReferenced;
+        _authorList = new ArrayList<>();
+        _loanList = new ArrayList<>();
+        _reserveList = new ArrayList<>();
     }
 
     public void reserveBook(Borrower bor) {
@@ -46,9 +48,7 @@ public class Book extends Item {
                 } else
                     System.out.println("\nYou already have one hold request for this book.\n");
             }
-
         }
-
     }
 
     public void addReserveRequest(Reserve r) {
@@ -67,7 +67,7 @@ public class Book extends Item {
 
                 Library.getInstance().addLoanedItem(l); // getting loan object maintain loan history
                 bor.addLoanedBook(l);  // adding it to borrower's loan list
-                this.addLoan(l);
+                addLoan(l);
                 System.out.println("\nThe book " + this._name + " is successfully issued to " + bor.get_name() + ".");
                 System.out.println("\nIssued by: " + staff.get_name());
             } else {
@@ -92,8 +92,6 @@ public class Book extends Item {
         if (fine > 0) {
             l.payFine();  //pay fine extends check in book as per the use case
         }
-
-
         System.out.println("\nThe book " + l.get_book().get_name() + " is successfully returned by " + bor.get_name() + ".");
         System.out.println("\nReceived by: " + staff.get_name());
     }
@@ -241,7 +239,7 @@ public class Book extends Item {
                 this._subject = scanner.nextLine();
             } else if (option == 3) {
                 System.out.println("Previous Authors = [" + _authorList + "]");
-                System.out.print("Enter The New Auther : ");
+                System.out.print("Enter The New Author : ");
                 this._authorList.add(scanner.nextLine());
             } else if (option == 4) {
                 Color.Print(Color.ANSI_WHITE + Color.ANSI_RED_BACKGROUND, "Exiting Menu :)");

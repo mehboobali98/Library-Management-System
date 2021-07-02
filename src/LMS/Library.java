@@ -932,7 +932,7 @@ public class Library {
                         if (temp == null) {
                             Color.Print(Color.ANSI_RED, "Book with id " + id + " dose not exist");
                         } else {
-                            if (temp._reserveList.size() > 0) {
+                            if (temp.get_reserveList().size() > 0) {
                                 Color.Print(Color.ANSI_BLUE, "Reservation Requests for this book are: ");
                                 temp.printReserveRequests();
                             } else {
@@ -1404,7 +1404,7 @@ public class Library {
         ArrayList<Dvd> dvdsToReturn = new ArrayList<Dvd>();
 
         for (Dvd dvd : this._dvdList) {
-            if (Helper.contains(dvd._composer, composerArg))
+            if (Helper.contains(dvd.get_composer(), composerArg))
                 dvdsToReturn.add(dvd);
         }
 
@@ -1420,7 +1420,7 @@ public class Library {
         ArrayList<Magazine> magazinesToReturn = new ArrayList<Magazine>();
 
         for (Magazine magazine : this._magazineList) {
-            if (Helper.contains(magazine._company, companyArg)) {
+            if (Helper.contains(magazine.get_company(), companyArg)) {
                 magazinesToReturn.add(magazine);
             }
         }

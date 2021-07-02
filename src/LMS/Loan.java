@@ -9,11 +9,11 @@ public class Loan {
     int _loanID;
     Date _issueDate;
     Date _returnDate;
-    boolean _finePaid;
     Staff _issuer;
     Staff _receiver;
     Borrower _borrower;
     Book _book;
+    boolean _finePaid;
     static int currentLoanId = 0;
 
     public Loan(int loanId, Date iDate, Date rDate, boolean fPaid, Staff i, Staff r, Borrower bor, Book b)  // Para cons.
@@ -30,7 +30,6 @@ public class Loan {
         _receiver = r;
         _issueDate = iDate;
         _returnDate = rDate;
-
         _finePaid = fPaid;
     }
 
@@ -40,7 +39,6 @@ public class Loan {
         this._returnDate = returnDate;
         this._finePaid = finePaid;
     }
-
 
     //Computes fine for a particular loan
     public double calculateFine() {
@@ -84,7 +82,6 @@ public class Loan {
         }
     }
 
-
     // Extending issued Date
     public void renewIssuedBook(Date issueDate) {
         _issueDate = issueDate;
@@ -94,9 +91,7 @@ public class Loan {
 
         int days = Library.getInstance().bookReturnDeadline;
         Date dueDate = Helper.addDays(_issueDate, days);
-
-        System.out.println("The due date is: " + dueDate.toString());
-
+        System.out.println("The due date is: " + dueDate);
     }
 
     @Override
