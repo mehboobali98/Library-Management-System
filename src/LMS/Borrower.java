@@ -32,7 +32,7 @@ public class Borrower extends Person {
 
             for (int i = 0; i < this.loanedBooksList.size(); i++) {
                 System.out.print(i + "-" + "\t\t");
-                System.out.println(this.loanedBooksList.get(i)._loanID);
+                System.out.println(this.loanedBooksList.get(i).get_loanID());
                 this.loanedBooksList.get(i).get_book().printInfo();
                 System.out.print("\n");
             }

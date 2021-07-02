@@ -1,20 +1,19 @@
 package LMS;
 
-
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Scanner;
 
 public class Loan {
-    int _loanID;
-    Date _issueDate;
-    Date _returnDate;
-    Staff _issuer;
-    Staff _receiver;
-    Borrower _borrower;
-    Book _book;
-    boolean _finePaid;
-    static int currentLoanId = 0;
+    private int _loanID;
+    private Date _issueDate;
+    private Date _returnDate;
+    private Staff _issuer;
+    private Staff _receiver;
+    private Borrower _borrower;
+    private Book _book;
+    private boolean _finePaid;
+    private static int currentLoanId = 0;
 
     public Loan(int loanId, Date iDate, Date rDate, boolean fPaid, Staff i, Staff r, Borrower bor, Book b)  // Para cons.
     {
@@ -33,7 +32,7 @@ public class Loan {
         _finePaid = fPaid;
     }
 
-    Loan(int loanID, Date returnDate, Date issueDate, boolean finePaid) {
+    public Loan(int loanID, Date returnDate, Date issueDate, boolean finePaid) {
         this._loanID = loanID;
         this._issueDate = issueDate;
         this._returnDate = returnDate;
@@ -47,9 +46,7 @@ public class Loan {
         if (!_finePaid) {
             Date issueDate = _issueDate;
             Date returnDate = new Date(); // date on which the book was returned
-
             long daysBetween = ChronoUnit.DAYS.between(issueDate.toInstant(), returnDate.toInstant());
-
             if (daysBetween > 0)
                 totalFine = daysBetween * Library.getInstance().fineAmount;
             else
@@ -61,19 +58,13 @@ public class Loan {
     public void payFine() {
 
         double totalFine = calculateFine();
-
         if (totalFine > 0) {
             System.out.println("\nTotal Fine generated: Rs " + totalFine);
-
             System.out.println("Do you want to pay? (y/n)");
-
             Scanner input = new Scanner(System.in);
-
             String choice = input.next();
-
             if (choice.equalsIgnoreCase("y"))
                 _finePaid = true;
-
             if (choice.equalsIgnoreCase("n"))
                 _finePaid = false;
         } else {
@@ -85,10 +76,8 @@ public class Loan {
     // Extending issued Date
     public void renewIssuedBook(Date issueDate) {
         _issueDate = issueDate;
-
         System.out.println("\nThe deadline of the book " + this.get_book().get_name() + " has been extended.");
         System.out.println("Issued Book is successfully renewed!\n");
-
         int days = Library.getInstance().bookReturnDeadline;
         Date dueDate = Helper.addDays(_issueDate, days);
         System.out.println("The due date is: " + dueDate);
