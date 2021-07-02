@@ -1,7 +1,5 @@
 package LMS;
 
-import javax.swing.plaf.ColorUIResource;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,7 +7,7 @@ import java.util.Scanner;
 
 public class Library {
     public static Library instance;
-    public Person currentLogedIn = null;
+    public Person currentLoggedIn = null;
     public double fineAmount;
     public int bookReturnDeadline; // number of days after which fine will be imposed
     public int reserve_request_expiry; //number of days after which a reserve request will expire
@@ -57,7 +55,7 @@ public class Library {
     void login() {
         System.out.println("---- Login ----");
         Scanner scanner = new Scanner(System.in);
-        while (this.currentLogedIn == null) {
+        while (this.currentLoggedIn == null) {
             System.out.print("Enter ID : ");
             int id = ExceptionInput.EInputInt("Please Enter Valid Id");
             System.out.print("Enter Password : ");
@@ -65,13 +63,13 @@ public class Library {
 
             if (password.equals("123456") && id == 7007) {
                 Color.Print(Color.ANSI_GREEN, "Logged In as Admin");
-                this.currentLogedIn = null;
+                this.currentLoggedIn = null;
                 return;
             }
 
             for (Librarian librarian : _librarianList) {
                 if (librarian.getId() == id && librarian.get_password().equals(password)) {
-                    this.currentLogedIn = librarian;
+                    this.currentLoggedIn = librarian;
                     System.out.println("Logged In as Librarian");
                     return;
 
@@ -80,7 +78,7 @@ public class Library {
 
             for (DeskClerk deskClerk : _deskClerkList) {
                 if (deskClerk.get_id() == id && deskClerk.get_password().equals(password)) {
-                    this.currentLogedIn = deskClerk;
+                    this.currentLoggedIn = deskClerk;
                     System.out.println("Logged In as DeskClerk");
                     return;
 
@@ -89,7 +87,7 @@ public class Library {
 
             for (Borrower borrower : _borrowerList) {
                 if (borrower.get_id() == id && borrower.get_password().equals(password)) {
-                    this.currentLogedIn = borrower;
+                    this.currentLoggedIn = borrower;
                     System.out.println("Logged in as Borrower");
                     return;
                 }
@@ -589,7 +587,7 @@ public class Library {
             } else if (option == 2) {
                 this.RenewLoan();
             } else if (option == 3) {
-                this.GiveLoanToBorrower(this.currentLogedIn);
+                this.GiveLoanToBorrower(this.currentLoggedIn);
             } else if (option == 0) {
                 Color.Print(Color.ANSI_RED, "Exiting to Previous Menu");
 
@@ -715,7 +713,7 @@ public class Library {
 
     void itemMenu() {
         login();
-        if (currentLogedIn != null) {
+        if (currentLoggedIn != null) {
             Scanner scanner = new Scanner(System.in);
             int option = -1;
             String optionMenu =
@@ -780,7 +778,7 @@ public class Library {
     }
 
     void LibrarianMenu() {
-        Color.Print(Color.ANSI_CYAN, "WELCOME MR. " + this.currentLogedIn.get_name());
+        Color.Print(Color.ANSI_CYAN, "WELCOME MR. " + this.currentLoggedIn.get_name());
         Scanner scanner = new Scanner(System.in);
         int option = -1;
         String options =
@@ -809,17 +807,17 @@ public class Library {
             } else if (option == 4) {
                 this.BookMenu();
             } else if (option == 5) {
-                this.returnBook(this.currentLogedIn);
+                this.returnBook(this.currentLoggedIn);
             } else if (option == 6) {
-                this.GiveLoanToBorrower(this.currentLogedIn);
+                this.GiveLoanToBorrower(this.currentLoggedIn);
             } else if (option == 7) {
-                this.reserveBook(this.currentLogedIn);
+                this.reserveBook(this.currentLoggedIn);
             } else if (option == 8) {
                 this.RenewLoan();
             } else if (option == 9) {
                 this.megaSearch();
             } else if (option == 10) {
-                this.computeTotalFine(this.currentLogedIn);
+                this.computeTotalFine(this.currentLoggedIn);
             } else if (option == 11) {
                 this.printReserveQueueOfABook();
             } else if (option == 0) {
@@ -832,7 +830,7 @@ public class Library {
     }
 
     void DeskClerkMenu() {
-        Color.Print(Color.ANSI_CYAN, "WELCOME MR. " + this.currentLogedIn.get_name());
+        Color.Print(Color.ANSI_CYAN, "WELCOME MR. " + this.currentLoggedIn.get_name());
         Scanner scanner = new Scanner(System.in);
         int option = -1;
         String options =
@@ -852,17 +850,17 @@ public class Library {
             if (option == 1) {
                 this.borrowerMenu();
             } else if (option == 2) {
-                this.returnBook(this.currentLogedIn);
+                this.returnBook(this.currentLoggedIn);
             } else if (option == 3) {
-                this.GiveLoanToBorrower(this.currentLogedIn);
+                this.GiveLoanToBorrower(this.currentLoggedIn);
             } else if (option == 4) {
-                this.reserveBook(this.currentLogedIn);
+                this.reserveBook(this.currentLoggedIn);
             } else if (option == 5) {
                 this.RenewLoan();
             } else if (option == 6) {
                 this.megaSearch();
             } else if (option == 7) {
-                this.computeTotalFine(this.currentLogedIn);
+                this.computeTotalFine(this.currentLoggedIn);
             } else if (option == 8) {
                 this.printReserveQueueOfABook();
             } else if (option == 0) {
@@ -875,7 +873,7 @@ public class Library {
     }
 
     void BorrowerMenu() {
-        Color.Print(Color.ANSI_CYAN, "WELCOME MR. " + this.currentLogedIn.get_name());
+        Color.Print(Color.ANSI_CYAN, "WELCOME MR. " + this.currentLoggedIn.get_name());
         Scanner scanner = new Scanner(System.in);
         int option = -1;
         String options =
@@ -895,13 +893,13 @@ public class Library {
             } else if (option == 2) {
                 this.megaSearch();
             } else if (option == 3) {
-                this.viewBorrowersPersonalInfo(currentLogedIn);
+                this.viewBorrowersPersonalInfo(currentLoggedIn);
             } else if (option == 4) {
-                this.reserveBook(currentLogedIn);
+                this.reserveBook(currentLoggedIn);
             } else if (option == 5) {
-                this.computeTotalFine(currentLogedIn);
+                this.computeTotalFine(currentLoggedIn);
             } else if (option == 6) {
-                this.printBorrowedBooks(currentLogedIn);
+                this.printBorrowedBooks(currentLoggedIn);
             } else if (option == 0) {
                 Color.Print(Color.ANSI_RED, "Logging out");
                 Logout();
@@ -1064,13 +1062,13 @@ public class Library {
             main = ExceptionInput.EInputInt("Wrong Enter Integer");
             if (main == 1) {
                 login();
-                if (currentLogedIn == null) {
+                if (currentLoggedIn == null) {
                     AdminMenu();
-                } else if (currentLogedIn instanceof Librarian) {
+                } else if (currentLoggedIn instanceof Librarian) {
                     LibrarianMenu();
-                } else if (currentLogedIn instanceof DeskClerk) {
+                } else if (currentLoggedIn instanceof DeskClerk) {
                     this.DeskClerkMenu();
-                } else if (currentLogedIn instanceof Borrower) {
+                } else if (currentLoggedIn instanceof Borrower) {
                     this.BorrowerMenu();
                 }
             } else if (main == 0) {
@@ -1517,6 +1515,6 @@ public class Library {
     }
 
     public void Logout() {
-        this.currentLogedIn = null;
+        this.currentLoggedIn = null;
     }
 }

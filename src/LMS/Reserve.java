@@ -3,7 +3,7 @@ package LMS;
 import java.util.Date;
 
 public class Reserve {
-    int _id = 0;
+    int _id;
     Date _reserveDate;
     Borrower _borrower;
     Book _book;
@@ -29,7 +29,6 @@ public class Reserve {
     public void set_id(int _id) {
         this._id = _id;
     }
-
 
     public Date get_reserveDate() {
         return _reserveDate;

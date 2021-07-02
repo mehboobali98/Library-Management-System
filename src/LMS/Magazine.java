@@ -19,7 +19,7 @@ public class Magazine extends Item {
     @Override
     public String toString() {
         return "Magazine{" +
-                "\nvompany='" + _company + '\'' +
+                "\ncompany='" + _company + '\'' +
                 "\n} " + super.toString();
     }
 }

@@ -7,7 +7,6 @@ public class Person {
     protected String _password;
     protected String _phoneNumber;
     protected String _address;
-
     private static int currentPersonId = 0;
 
     Person(int id, String name, String password, String phoneNumber, String address) {

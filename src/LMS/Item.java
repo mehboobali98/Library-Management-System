@@ -1,8 +1,8 @@
 package LMS;
 
 public class Item {
-    int _ID;
-    String _name;
+    public int _ID;
+    public String _name;
     private static int currentItemId = 0;
 
     Item(int ID, String name) {
