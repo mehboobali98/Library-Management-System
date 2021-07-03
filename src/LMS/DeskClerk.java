@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class DeskClerk extends Staff {
     private int _deskNumber;
 
-    DeskClerk(int id, String name, String password, String phoneNumber, String address, double salary, int deskNumber) {
+    public DeskClerk(int id, String name, String password, String phoneNumber, String address, double salary, int deskNumber) {
         super(id, name, password, phoneNumber, address, salary);
         this._deskNumber = deskNumber;
     }

@@ -8,7 +8,7 @@ public class Borrower extends Person {
     private ArrayList<Loan> loanedBooksList;
     private ArrayList<Reserve> reservedBookList;
 
-    Borrower(int id, String name, String password, String phoneNumber, String address) {
+    public Borrower(int id, String name, String password, String phoneNumber, String address) {
         super(id, name, password, phoneNumber, address);
         this.loanedBooksList = new ArrayList<>();
         this.reservedBookList = new ArrayList<>();

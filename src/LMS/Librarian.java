@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Librarian extends Staff {
     private int _officeNumber;
 
-    Librarian(int id, String name, String password, String phoneNumber, String address, double salary, int officeNumber) {
+    public Librarian(int id, String name, String password, String phoneNumber, String address, double salary, int officeNumber) {
         super(id, name, password, phoneNumber, address, salary);
         this._officeNumber = officeNumber;
     }

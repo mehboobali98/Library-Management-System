@@ -13,7 +13,7 @@ public class Book extends Item {
     private List<Loan> _loanList;
     private List<Reserve> _reserveList;
 
-    Book(int ID, String name, boolean isIssued, String title, boolean isReferenced) {
+    public Book(int ID, String name, boolean isIssued, String title, boolean isReferenced) {
         super(ID, name);
         _isIssued = isIssued;
         _subject = title;
@@ -25,9 +25,9 @@ public class Book extends Item {
 
     public void reserveBook(Borrower bor) {
         boolean makeRequest = true;
-        if (is_isReferenced() == false) // referenced books cannot be reserved
+        if (!is_isReferenced()) // referenced books cannot be reserved
         {
-            if (bor.checkIfAlreadyBorrowed(this) == true) // book has already been borrowed by the user
+            if (bor.checkIfAlreadyBorrowed(this)) // book has already been borrowed by the user
             {
                 System.out.println("\n" + "You have already borrowed " + this._name);
                 return;
@@ -59,8 +59,8 @@ public class Book extends Item {
 
     public void issueBook(Borrower bor, Staff staff) {
         // TODO: 12/4/2019  name = title, subject = fiction etc
-        if (bor.checkBorrowerEligibility() == true) {
-            if (checkBookAvailability() == true) {
+        if (bor.checkBorrowerEligibility()) {
+            if (checkBookAvailability()) {
                 set_isIssued(true);
 
                 Loan l = new Loan(-1, new Date(), null, false, staff, null, bor, this);
@@ -220,11 +220,11 @@ public class Book extends Item {
     public void EditBook() {
         Scanner scanner = new Scanner(System.in);
         int option = -1;
-        String optionMenu = new String("\n1 to edit ID" +
+        String optionMenu = "\n1 to edit ID" +
                 "\n2 to edit Name" +
                 "\n3 to edit Title" +
                 "\n4 to edit AuthorList" +
-                "\n0 to Exit");
+                "\n0 to Exit";
 
         while (option != 0) {
             Color.Print(Color.ANSI_GREEN, optionMenu);

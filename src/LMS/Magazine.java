@@ -3,7 +3,7 @@ package LMS;
 public class Magazine extends Item {
     private String _company;
 
-    Magazine(int ID, String name, String company) {
+    public Magazine(int ID, String name, String company) {
         super(ID, name);
         this._company = company;
     }

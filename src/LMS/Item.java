@@ -1,11 +1,11 @@
 package LMS;
 
 public class Item {
-    public int _ID;
-    public String _name;
+    protected int _ID;
+    protected String _name;
     private static int currentItemId = 0;
 
-    Item(int ID, String name) {
+    public Item(int ID, String name) {
         if (ID == -1) {
             currentItemId++;
             this._ID = currentItemId;
