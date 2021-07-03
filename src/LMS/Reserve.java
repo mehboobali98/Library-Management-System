@@ -3,14 +3,13 @@ package LMS;
 import java.util.Date;
 
 public class Reserve {
-    int _id;
-    Date _reserveDate;
-    Borrower _borrower;
-    Book _book;
-
+    private int _id;
+    private Date _reserveDate;
+    private Borrower _borrower;
+    private Book _book;
     private static int currentReserveId = 0;
 
-    Reserve(int id, Date reserveDate, Borrower borrower, Book book) {
+    public Reserve(int id, Date reserveDate, Borrower borrower, Book book) {
         if (id == -1) {
             currentReserveId++;
             this._id = currentReserveId;
@@ -20,7 +19,6 @@ public class Reserve {
         this._borrower = borrower;
         this._reserveDate = reserveDate;
     }
-
 
     public int get_id() {
         return _id;
