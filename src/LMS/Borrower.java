@@ -47,7 +47,7 @@ public class Borrower extends Person {
     }
 
     public boolean checkBorrowerEligibility() {
-        if (checkBorrowedBookCount() == true && checkFineStatus() == true) {
+        if (checkBorrowedBookCount() && checkFineStatus() == true) {
             return true;  // borrower will be eligible to issue a book if both are true
         } else {
             return false;
@@ -103,8 +103,8 @@ public class Borrower extends Person {
         this.reservedBookList.add(res);
     }
 
-    public void removeReservedBook(Book book) {
-        this.reservedBookList.remove(book);
+    public void removeReservedBook(Reserve res) {
+        this.reservedBookList.remove(res);
     }
 
     @Override

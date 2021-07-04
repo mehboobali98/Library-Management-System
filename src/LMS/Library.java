@@ -1186,7 +1186,7 @@ public class Library {
         for (Reserve reserve : _reserveList) {
             if (reserve.get_id() == id) {
                 reserve.get_book().removeReserve(reserve);
-                reserve.get_borrower().removeReservedBook(reserve.get_book());
+                reserve.get_borrower().removeReservedBook(reserve);
             }
         }
         _reserveList.removeIf(reserve -> reserve.get_id() == id);
