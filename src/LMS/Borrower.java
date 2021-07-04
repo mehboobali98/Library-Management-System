@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class Borrower extends Person {
 
-    private ArrayList<Loan> loanedBooksList;
-    private ArrayList<Reserve> reservedBookList;
+    private final ArrayList<Loan> loanedBooksList;
+    private final ArrayList<Reserve> reservedBookList;
 
     public Borrower(int id, String name, String password, String phoneNumber, String address) {
         super(id, name, password, phoneNumber, address);
@@ -47,19 +47,12 @@ public class Borrower extends Person {
     }
 
     public boolean checkBorrowerEligibility() {
-        if (checkBorrowedBookCount() && checkFineStatus() == true) {
-            return true;  // borrower will be eligible to issue a book if both are true
-        } else {
-            return false;
-        }
+        return checkBorrowedBookCount() && checkFineStatus();  // borrower will be eligible to issue a book if both are true
     }
 
     public boolean checkBorrowedBookCount() {
         if (this.loanedBooksList != null) {
-            if (this.loanedBooksList.size() > 4) {
-                return false;  // cannot issue more than 4 books
-            }
-            return true;
+            return this.loanedBooksList.size() <= 4;  // cannot issue more than 4 books
         }
         return true;
     }
@@ -74,29 +67,13 @@ public class Borrower extends Person {
     }
 
     public boolean checkIfAlreadyBorrowed(Book b) {
-        for (int i = 0; i < this.loanedBooksList.size(); i++) {
-            if (this.loanedBooksList.get(i).get_book() == b) // book has already been loaned
+        for (Loan loan : this.loanedBooksList) {
+            if (loan.get_book() == b) // book has already been loaned
             {
                 return true;
             }
         }
         return false;
-    }
-
-    public ArrayList<Reserve> get_reservedBooksList() {
-        return reservedBookList;
-    }
-
-    public void set_reservedBooksList(ArrayList<Reserve> _reservedBooksList) {
-        this.reservedBookList = _reservedBooksList;
-    }
-
-    public ArrayList<Loan> get_loanBooksList() {
-        return loanedBooksList;
-    }
-
-    public void set_loanBooksList(ArrayList<Loan> _loanBooksList) {
-        this.loanedBooksList = _loanBooksList;
     }
 
     public void addReserveBook(Reserve res) {
