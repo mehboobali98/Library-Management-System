@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Loan {
-    private int _loanID;
+    private final int _loanID;
     private Date _issueDate;
     private Date _returnDate;
     private Staff _issuer;
@@ -101,16 +101,8 @@ public class Loan {
         return _loanID;
     }
 
-    public void set_loanID(int _loanID) {
-        this._loanID = _loanID;
-    }
-
     public Date get_issueDate() {
         return _issueDate;
-    }
-
-    public void set_issueDate(Date _issueDate) {
-        this._issueDate = _issueDate;
     }
 
     public Date get_returnDate() {
@@ -125,20 +117,8 @@ public class Loan {
         return _finePaid;
     }
 
-    public void set_finePaid(boolean _finePaid) {
-        this._finePaid = _finePaid;
-    }
-
     public Staff get_issuer() {
         return _issuer;
-    }
-
-    public void set_issuer(Staff _issuer) {
-        this._issuer = _issuer;
-    }
-
-    public Staff get_receiver() {
-        return _receiver;
     }
 
     public void set_receiver(Staff _receiver) {
@@ -149,15 +129,8 @@ public class Loan {
         return _borrower;
     }
 
-    public void set_borrower(Borrower _borrower) {
-        this._borrower = _borrower;
-    }
-
     public Book get_book() {
         return _book;
     }
 
-    public void set_book(Book _book) {
-        this._book = _book;
-    }
 }

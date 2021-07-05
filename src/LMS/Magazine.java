@@ -12,10 +12,6 @@ public class Magazine extends Item {
         return _company;
     }
 
-    public void set_company(String _company) {
-        this._company = _company;
-    }
-
     @Override
     public String toString() {
         return "Magazine{" +
