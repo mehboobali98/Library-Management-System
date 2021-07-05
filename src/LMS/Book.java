@@ -10,8 +10,8 @@ public class Book extends Item {
     boolean _isReferenced;
     boolean _isIssued;
     private List<String> _authorList;
-    private List<Loan> _loanList;
-    private List<Reserve> _reserveList;
+    private final List<Loan> _loanList;
+    private final List<Reserve> _reserveList;
 
     public Book(int ID, String name, boolean isIssued, String title, boolean isReferenced) {
         super(ID, name);
@@ -30,10 +30,9 @@ public class Book extends Item {
             if (bor.checkIfAlreadyBorrowed(this)) // book has already been borrowed by the user
             {
                 System.out.println("\n" + "You have already borrowed " + this._name);
-                return;
             } else {
-                for (int i = 0; i < this._reserveList.size(); i++) {
-                    if ((this._reserveList.get(i).get_borrower() == bor)) {
+                for (Reserve value : this._reserveList) {
+                    if ((value.get_borrower() == bor)) {
                         makeRequest = false;
                         break;
                     }
@@ -97,11 +96,7 @@ public class Book extends Item {
     }
 
     public boolean checkBookAvailability() {
-        if (this.is_isIssued() || this.is_isReferenced()) {
-            return false;
-        }
-
-        return true;
+        return !this.is_isIssued() && !this.is_isReferenced();
     }
 
     public boolean is_isIssued() {
@@ -114,10 +109,6 @@ public class Book extends Item {
 
     public String get_subject() {
         return _subject;
-    }
-
-    public void set_subject(String _subject) {
-        this._subject = _subject;
     }
 
     public boolean is_isReferenced() {
@@ -136,20 +127,8 @@ public class Book extends Item {
         this._authorList = _authorList;
     }
 
-    public List<Loan> get_loanList() {
-        return _loanList;
-    }
-
-    public void set_loanList(List<Loan> _loanList) {
-        this._loanList = _loanList;
-    }
-
     public List<Reserve> get_reserveList() {
         return _reserveList;
-    }
-
-    public void set_reserveList(List<Reserve> _reserveList) {
-        this._reserveList = _reserveList;
     }
 
     public void removeReserve(Reserve reserve) {

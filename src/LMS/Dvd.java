@@ -1,7 +1,7 @@
 package LMS;
 
 public class Dvd extends Item {
-    private String _composer;
+    private final String _composer;
 
     public Dvd(int ID, String name, String composer) {
         super(ID, name);
@@ -10,10 +10,6 @@ public class Dvd extends Item {
 
     public String get_composer() {
         return _composer;
-    }
-
-    public void set_composer(String _composer) {
-        this._composer = _composer;
     }
 
     @Override
